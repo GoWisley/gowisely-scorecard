@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI Readiness Scorecard | Go Wisely</title>
+<meta name="description" content="How ready is your business for AI? Answer 18 questions across six areas and get an instant score, a breakdown by area and the three things most worth fixing first. Free, about 8 minutes.">
+<link rel="canonical" href="https://score.gowisely.ai/">
+<meta name="theme-color" content="#F9F8F4">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23ED7D31%22/%3E%3Ctext x=%2232%22 y=%2245%22 font-family=%22Georgia,serif%22 font-size=%2238%22 fill=%22%23F9F8F4%22 text-anchor=%22middle%22%3EG%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Go Wisely">
+<meta property="og:url" content="https://score.gowisely.ai/">
+<meta property="og:title" content="How ready is your business for AI?">
+<meta property="og:description" content="A free 8-minute scorecard across six areas, with your results on screen straight away.">
+<meta property="og:image" content="https://score.gowisely.ai/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How ready is your business for AI?">
+<meta name="twitter:description" content="A free 8-minute scorecard across six areas, with your results on screen straight away.">
+<meta name="twitter:image" content="https://score.gowisely.ai/og-image.png">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+<noscript><p style="padding:24px;font-family:Georgia,serif">This scorecard needs JavaScript switched on. You can also book a free Discovery Session at calendly.com/nathan-gowisely/30min.</p></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+<style>
+:root{
+  --bg:#F9F8F4; --surface:#FFFFFF; --ink:#2B2B2B; --muted:#6B6660; --line:#E4DFD6;
+  --accent:#ED7D31; --accent-ink:#B8561A; --accent-soft:#FBE7D8;
+  --good:#3F7D58; --warn:#B7791F; --low:#B4432F;
+  --serif:Georgia,"Times New Roman",serif; --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;
+    --bg:#1E1D1B; --surface:#282725; --ink:#F1EEE8; --muted:#A8A198; --line:#3A3835;
+    --accent:#F08A45; --accent-ink:#F4A26B; --accent-soft:#3B2A1E;
+    --good:#6DBB8A; --warn:#E0A84A; --low:#E27A66;}
+}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#1E1D1B; --surface:#282725; --ink:#F1EEE8; --muted:#A8A198; --line:#3A3835;
+  --accent:#F08A45; --accent-ink:#F4A26B; --accent-soft:#3B2A1E;
+  --good:#6DBB8A; --warn:#E0A84A; --low:#E27A66;}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;padding-inline:20px;padding-block:0 64px}
+.wrap{max-width:760px;margin:0 auto}
+h1,h2,h3{font-family:var(--serif);font-weight:400;text-wrap:balance;margin:0}
+p{margin:0}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);font-weight:600}
+.muted{color:var(--muted)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-20px;padding:12px 20px}
+.bar-in{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px}
+.brand{font-family:var(--serif);font-size:18px}
+.brand b{color:var(--accent);font-weight:400}
+.track{height:3px;background:var(--line);margin-top:10px;max-width:760px;margin-inline:auto;border-radius:2px;overflow:hidden}
+.track i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+
+/* intro */
+.intro{padding-block:48px 24px;display:grid;gap:20px}
+.intro h1{font-size:clamp(34px,6vw,50px);line-height:1.08}
+.intro .lede{font-size:18px;max-width:58ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+.facts span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle}
+.dims{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px}
+.dims div{background:var(--surface);padding:14px 16px}
+.dims strong{display:block;font-family:var(--serif);font-weight:400;font-size:18px}
+.dims small{color:var(--muted);font-size:13.5px}
+
+/* form */
+.step{padding-block:40px 8px;display:grid;gap:28px}
+.step-head{display:grid;gap:8px}
+.step-head h2{font-size:clamp(30px,5vw,40px)}
+.q{display:grid;gap:12px;scroll-margin-top:90px}
+.q-label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.q h3{font-size:21px;line-height:1.3}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--accent)}
+.opt input{accent-color:var(--accent);margin-top:4px;flex-shrink:0;width:16px;height:16px}
+.opt:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.q.missing h3{color:var(--low)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips .opt{padding:9px 14px}
+
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:12px;flex-wrap:wrap}
+.btn{border:0;border-radius:6px;padding:13px 24px;background:var(--ink);color:var(--bg);font-weight:500}
+.btn.primary{background:var(--accent);color:#1F150D}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.4;cursor:default}
+.hint{font-size:14px;color:var(--low);min-height:1.4em}
+a.btn{text-decoration:none;display:inline-block}
+
+/* results */
+.res{padding-block:40px 0;display:grid;gap:40px}
+.hero{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:center}
+@media (max-width:680px){.hero{grid-template-columns:1fr}}
+.score{display:flex;align-items:baseline;gap:6px;font-family:var(--serif)}
+.score b{font-size:84px;line-height:1;font-weight:400;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.score span{font-size:22px;color:var(--muted)}
+.stage{font-family:var(--serif);font-size:28px;line-height:1.2;margin-top:6px}
+.stage-copy{margin-top:10px;max-width:52ch}
+.radar{width:100%;max-width:340px;justify-self:center}
+.radar text{fill:var(--muted);font-family:var(--sans);font-size:11px}
+
+.sec h2{font-size:28px;margin-bottom:6px}
+.sec > p{margin-bottom:18px}
+.rows{display:grid;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:170px 1fr;gap:6px 24px;padding-block:18px;border-bottom:1px solid var(--line)}
+@media (max-width:600px){.row{grid-template-columns:1fr}}
+.row-name{font-family:var(--serif);font-size:19px}
+.meter{display:flex;align-items:center;gap:10px;margin-top:6px}
+.meter .m{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden;max-width:110px}
+.meter .m i{display:block;height:100%;border-radius:3px}
+.meter em{font-style:normal;font-size:14px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.pill{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;padding:3px 9px;border-radius:99px;margin-bottom:6px}
+.pill.low{background:color-mix(in srgb,var(--low) 16%,transparent);color:var(--low)}
+.pill.mid{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.pill.high{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
+
+.flags{display:grid;gap:10px}
+.flag{border-left:3px solid var(--warn);background:var(--surface);padding:14px 16px;border-radius:0 8px 8px 0}
+.flag strong{display:block;margin-bottom:2px}
+
+.pri{display:grid;gap:12px;counter-reset:p;margin:0;padding:0}
+.pri li{list-style:none;display:grid;grid-template-columns:36px 1fr;gap:4px 14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.pri li::before{counter-increment:p;content:counter(p);grid-row:span 2;font-family:var(--serif);font-size:28px;color:var(--accent-ink);line-height:1}
+.pri strong{font-weight:600}
+.pri ol{margin:0;padding:0}
+
+.next{background:var(--ink);color:var(--bg);border-radius:14px;padding:32px clamp(20px,5vw,40px);display:grid;gap:16px}
+.next .eyebrow{color:var(--accent)}
+.next h2{font-size:clamp(26px,4.5vw,34px)}
+.next ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.next .price{font-family:var(--serif);font-size:20px}
+.next .row-btn{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:6px}
+.next .btn.ghost{color:var(--bg);border-color:color-mix(in srgb,var(--bg) 35%,transparent)}
+.signoff{font-family:var(--serif);font-style:italic;font-size:18px}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.small{font-size:13.5px}
+textarea.copybox{width:100%;height:160px;font:13px/1.5 ui-monospace,monospace;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px}
+.fields{display:grid;gap:22px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media (max-width:600px){.pair{grid-template-columns:1fr}}
+.field{display:grid;gap:6px;align-content:start}
+.field label,.field .lab{font-weight:600;font-size:15px}
+.field small{color:var(--muted);font-size:13.5px;margin-top:-4px}
+.field input,.field select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;width:100%}
+.field input:focus,.field select:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.field.bad input,.field.bad select{border-color:var(--low)}
+.field .err{color:var(--low);font-size:13.5px;min-height:0}
+.consent{display:grid;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px}
+.consent label{display:flex;gap:10px;align-items:flex-start;font-size:14.5px}
+.consent input{accent-color:var(--accent);margin-top:4px;width:16px;height:16px;flex-shrink:0}
+.consent .opt-in{color:var(--muted)}
+.consent a{color:var(--accent-ink)}
+.consent.bad{border-color:var(--low)}
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+.checks .opt{padding:10px 14px;font-size:15px}
+.note{font-size:13.5px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="bar"><div class="bar-in"><span class="brand">Go <b>Wisely</b></span><span id="barStatus" class="muted">AI Readiness Scorecard</span></div><div class="track"><i id="trackFill"></i></div></div>
+
+<div class="wrap">
+  <!-- INTRO -->
+  <section id="intro" class="intro">
+    <p class="eyebrow">Free scorecard · Go Wisely</p>
+    <h1>How ready is your business for AI?</h1>
+    <p class="lede">Eighteen questions across the six areas we look at in every Go Wisely Diagnostic. Answer for how things work today, not how you'd like them to work. You'll get your score, a breakdown by area, and the three things most worth fixing first.</p>
+    <div class="facts"><span>About 8 minutes</span><span>Results on screen straight away</span><span>Progress saved on this device</span></div>
+    <div class="dims" id="dimList"></div>
+    <div class="nav"><button class="btn primary" id="startBtn">Start the scorecard</button><button class="btn ghost" id="sampleBtn">See an example result</button></div>
+  </section>
+
+  <!-- QUESTIONS -->
+  <form id="form" hidden novalidate>
+    <div id="stepHost"></div>
+    <p class="hint" id="hint" role="status"></p>
+    <div class="nav"><button type="button" class="btn ghost" id="backBtn">Back</button><button type="submit" class="btn" id="nextBtn">Next</button></div>
+  </form>
+
+  <!-- RESULTS -->
+  <section id="results" class="res" hidden></section>
+</div>
+
+<script>
+const DIMS = [
+ {id:"vision", name:"Vision", blurb:"Where the business is going, and whether AI is part of getting there.",
+  qs:[
+   ["How clearly is AI tied to your business goals for the next 12 months?",["It isn't. AI hasn't come up in planning","We talk about it, but it isn't linked to any goal","Linked to one or two goals, informally","Written into the plan, with an outcome we expect","Written in, with targets, and reviewed at leadership meetings"]],
+   ["Who in your leadership team owns AI?",["Nobody","An enthusiast, with no mandate or budget","A named leader, as a side interest","A named leader with budget","A named leader with budget and time protected in the diary"]],
+   ["How aligned is your leadership team on what AI should do for the business?",["We haven't discussed it","Views differ widely","Broad agreement, no specifics","Agreed priorities, written down","Agreed, written down and shared with the whole team"]]
+  ],
+  low:"AI isn't yet connected to where the business is heading, so any activity will depend on individual enthusiasm and fade when they get busy.",
+  mid:"There's intent and some ownership, but AI still sits beside the plan rather than inside it.",
+  high:"AI is linked to your goals and someone with authority owns it. That's the hardest foundation to build, and you have it.",
+  move:"Name one leader as owner and agree, in writing, the one or two business goals AI should help with this year."},
+ {id:"opps", name:"Opportunities", blurb:"Where AI could make a real difference, named specifically.",
+  qs:[
+   ["How specifically can you name where AI would help this business?",["We can't yet","Broad areas, like admin or marketing","Two or three specific tasks or processes","Specific processes, each with an owner","Specific, owned and ranked by value"]],
+   ["Do you know where your team's time actually goes?",["No real idea","A general sense","We could list the big time-sinks","We've measured the main ones","Measured, and we know what each one costs"]],
+   ["Have you tried AI on a real piece of work yet?",["No","Individuals experimenting on their own","A few informal trials, results not recorded","A structured trial with a clear before and after","Several trials, with decisions made on the results"]]
+  ],
+  low:"Without specific, named use cases it's hard to choose a tool, set a budget or know where to start.",
+  mid:"You can see where AI might help, but the ideas aren't yet ranked by value or tested properly.",
+  high:"You know where AI would help, you know what the time costs, and you've tested ideas. You're ready to prioritise.",
+  move:"List the five most time-consuming recurring tasks, estimate the hours each takes a month, and pick one to trial properly."},
+ {id:"people", name:"People and Culture", blurb:"How confident your team is, and how change has landed before.",
+  qs:[
+   ["How confident is your team using AI tools today?",["Most haven't tried them","A few use them, quietly","Mixed: some confident, many not","Most use them for everyday tasks","Confident, and sharing what works with each other"]],
+   ["How have past changes to tools or processes landed with your team?",["Badly, and people still mention it","Resisted, adopted slowly","Mixed","Generally well","Well, and people ask for the next one"]],
+   ["Is there someone who could champion AI day to day and keep it going?",["No","Possibly, but they have no capacity","Someone likely, not confirmed","A named person with time set aside","Named, with time, authority and real interest"]]
+  ],
+  low:"Tools are the easy part. Without confidence and a champion, adoption will stall after the first few weeks.",
+  mid:"There's some confidence and goodwill, but it's patchy and depends on a few people.",
+  high:"Your team is confident, change has landed well before, and there's someone to carry it. That's a real advantage.",
+  move:"Find your champion, give them a few protected hours a week, and run a short hands-on session for the whole team."},
+ {id:"tools", name:"Tools and Data", blurb:"The systems you run on, and how easily information flows between them.",
+  qs:[
+   ["How well do your current systems support how the business actually runs?",["Spreadsheets and email hold it together","Systems exist, but people work around them","Fit for purpose, with known gaps","Good fit, actively maintained","Good fit, with changes planned deliberately"]],
+   ["How easily can you find reliable client, project or financial information when you need it?",["It's scattered and often out of date","It exists, but takes digging","Mostly findable, if you know who to ask","Organised, with clear owners","Organised, owned and quality-checked"]],
+   ["Do your systems share data, or does someone re-type it?",["Everything is re-typed","A few exports and imports","Key systems connected, some gaps","Most systems connected","Connected, and someone checks the joins"]]
+  ],
+  low:"AI works on the information you give it. Scattered, re-typed data will limit what any tool can do for you.",
+  mid:"Your systems mostly work, but gaps and manual re-typing will slow down anything more ambitious.",
+  high:"Your systems and data are in good shape. AI tools will have something reliable to work with.",
+  move:"Map where your key client and project information lives, and fix the one hand-off that gets re-typed most often."},
+ {id:"gov", name:"Governance", blurb:"The rules for using AI, and whether people follow them.",
+  qs:[
+   ["What rules do you have for using tools like ChatGPT, Claude or Copilot?",["None","An unwritten \"be sensible\"","A written policy few people have read","A short guide people know and follow","Known and followed, with approved tools and a route to add new ones"]],
+   ["Do you know what staff are putting into AI tools right now?",["No, and it worries us","We assume some use, unmonitored","Roughly who uses what","Yes, and it's on approved tools","Yes, on approved tools, and reviewed"]],
+   ["Would AI-assisted work be checked by a person before it reached a client or drove a decision?",["Probably not","Depends who's doing it","Usually, informally","Always, by an agreed rule","Always, with a named approver for each type of work"]]
+  ],
+  low:"Your team is likely using AI already, without guidance. That's where client data and reputational risk come from.",
+  mid:"Some guidance exists, but it isn't consistently known, followed or checked.",
+  high:"Clear rules, approved tools and human review are in place. You can move faster because the guardrails are there.",
+  move:"Write a one-page AI use guide: approved tools, what must never go in, and who checks AI-assisted work before it leaves the building."},
+ {id:"value", name:"Value", blurb:"How you'd know AI was worth it, and what you could invest.",
+  qs:[
+   ["If you invested in AI, how would you know it had worked?",["Gut feel","Things would feel easier","We'd check a couple of numbers we already have","We'd agree measures before starting","We'd take a baseline first, then measure against it"]],
+   ["How well do you know which clients, services or products actually make money?",["Not at all","We know revenue, not profit","Headline margin by line","Margin after most delivery costs","True margin, including time, rework and overheads"]],
+   ["What could you realistically commit to AI in the next 12 months?",["Nothing yet","A few ad hoc tool subscriptions","A modest amount, not yet agreed","An agreed budget","An agreed budget, tied to expected returns"]]
+  ],
+  low:"Without a baseline or a budget, it will be hard to tell whether AI is paying off, or to justify doing more.",
+  mid:"You have some numbers and some appetite, but no agreed way to judge success before you start.",
+  high:"You know where you make money, you'd measure properly, and there's budget. You can invest with confidence.",
+  move:"Before any AI spend, record today's numbers for the process you want to improve: hours, errors or turnaround time."}
+];
+const STAGES = [
+ {min:0,  name:"Build the foundations first", copy:"Starting with AI tools now would probably waste money. That's a useful thing to know. A few focused changes to ownership, rules and data will make the next step far more likely to pay off."},
+ {min:30, name:"Ready to explore", copy:"The interest is there and some pieces are in place. The priority now is to turn general enthusiasm into one or two specific, measured opportunities."},
+ {min:55, name:"Ready to pilot", copy:"You have enough in place to run a proper pilot on a real process, with a baseline and a clear decision at the end, including the option to stop."},
+ {min:78, name:"Ready to scale", copy:"You're ahead of most businesses your size. The job now is to spread what works across the team without losing control of quality or risk."}
+];
+const SECTORS = ["Creative or events agency","Marketing or digital agency","Professional services","Retail or e-commerce","Manufacturing or engineering","Construction or trades","Hospitality or leisure","Health or care","Charity or not-for-profit","Other"];
+const SIZES = ["1 to 9","10 to 49","50 to 249","250 or more"];
+const SYSTEMS = ["Accounting or finance","CRM","Project or job management","Email marketing","HR or payroll","Helpdesk or ticketing","E-commerce platform","Reporting or dashboards","Microsoft 365 or Google Workspace","Spreadsheets as the main system"];
+
+// ---- Settings ----
+const CAL = "https://calendly.com/nathan-gowisely/30min";
+const PRIVACY_URL = "https://gowisely.ai/privacy";   // replace with your privacy notice
+const FORMSPREE_URL = "";   // paste your scorecard form's endpoint, e.g. https://formspree.io/f/abcdwxyz
+const SEND_ON_START = false; // true also sends a "started" submission after the details page (uses two submissions per person)
+const STORE_KEY = "gw-scorecard-v1", STORE_DAYS = 14;
+
+const $ = s => document.querySelector(s);
+let step = 0; // 0 = your details, 1..6 = areas
+const answers = {};
+const details = {name:"",company:"",email:"",sector:"",size:"",privacy:false,marketing:false,systems:[]};
+const sid = Math.random().toString(36).slice(2,10)+Date.now().toString(36);
+let sessionId = sid;
+function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify({t:Date.now(),step,answers,details,sessionId})); }catch(e){} }
+function load(){ try{ const d=JSON.parse(localStorage.getItem(STORE_KEY)||"null"); if(!d) return false;
+  if(Date.now()-d.t > STORE_DAYS*864e5){ localStorage.removeItem(STORE_KEY); return false; }
+  Object.assign(answers,d.answers||{}); Object.assign(details,d.details||{}); step=d.step||0; sessionId=d.sessionId||sid; return true; }catch(e){ return false; } }
+function clearSaved(){ try{ localStorage.removeItem(STORE_KEY); }catch(e){} }
+function send(event, extra){
+  if(!FORMSPREE_URL) return;
+  const who = `${details.name} at ${details.company}`;
+  const data = {
+    _subject: event==="completed" ? `Scorecard: ${who} scored ${extra.overall_score}/100` : `Scorecard started: ${who}`,
+    email: details.email, event, ...(extra&&extra.summary?{summary:extra.summary}:{}),
+    name: details.name, company: details.company, sector: details.sector, headcount: details.size,
+    systems: details.systems.join("; ") || "None ticked",
+    privacy_accepted: details.privacy?"yes":"no", marketing_opt_in: details.marketing?"yes":"no",
+    session_id: sessionId, submitted_at: new Date().toISOString(), ...(extra||{})
+  };
+  try{ fetch(FORMSPREE_URL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(data)}).catch(()=>{}); }catch(e){}
+}
+const esc = t => String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// intro dims
+$("#dimList").innerHTML = DIMS.map(d=>`<div><strong>${d.name}</strong><small>${d.blurb}</small></div>`).join("");
+
+function progress(){
+  const total = DIMS.length*3, done = DIMS.reduce((n,d)=>n+d.qs.filter((_,i)=>answers[d.id+i]).length,0);
+  $("#trackFill").style.width = (done/total*100)+"%";
+  $("#barStatus").textContent = `${done} of ${total} answered`;
+}
+function optHtml(name,opts,chips){
+  return `<div class="${chips?'chips':'opts'}">`+opts.map((o,i)=>{
+    const v = chips? o : i+1; const id=`${name}-${i}`;
+    return `<label class="opt" for="${id}"><input type="radio" id="${id}" name="${name}" value="${v}" ${String(answers[name])===String(v)?'checked':''}><span>${o}</span></label>`}).join("")+`</div>`;
+}
+function render(){
+  const host=$("#stepHost"); $("#hint").textContent="";
+  if(step===0){
+    const sel=(id,list)=>`<select id="f-${id}" name="${id}"><option value="">Choose one</option>${list.map(o=>`<option ${details[id]===o?"selected":""}>${o}</option>`).join("")}</select>`;
+    host.innerHTML = `<div class="step"><div class="step-head"><p class="eyebrow">Before we start</p><h2>Who are these results for?</h2><p class="muted">Five quick details, so your scorecard is addressed to you and your business.</p></div>
+    <div class="fields">
+      <div class="pair">
+        <div class="field" data-f="name"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" value="${esc(details.name)}"><span class="err"></span></div>
+        <div class="field" data-f="company"><label for="f-company">Company name</label><input id="f-company" name="company" autocomplete="organization" value="${esc(details.company)}"><span class="err"></span></div>
+      </div>
+      <div class="field" data-f="email"><label for="f-email">Work email</label><small>So we can follow up on your results if you'd like us to.</small><input id="f-email" name="email" type="email" autocomplete="email" value="${esc(details.email)}"><span class="err"></span></div>
+      <div class="pair">
+        <div class="field" data-f="sector"><label for="f-sector">Sector</label>${sel("sector",SECTORS)}<span class="err"></span></div>
+        <div class="field" data-f="size"><label for="f-size">Number of people</label>${sel("size",SIZES)}<span class="err"></span></div>
+      </div>
+      <div class="consent" data-f="privacy">
+        <label for="f-privacy"><input type="checkbox" id="f-privacy" name="privacy" ${details.privacy?"checked":""}><span>I've read the <a href="${PRIVACY_URL}" target="_blank" rel="noopener">privacy notice</a> and understand how my answers are used.</span></label>
+        <label for="f-marketing" class="opt-in"><input type="checkbox" id="f-marketing" name="marketing" ${details.marketing?"checked":""}><span>Go Wisely can also send me occasional practical AI guidance. Optional, and separate from getting your results.</span></label>
+      </div>
+      <p class="note">Your answers save as you go, on this device, for ${STORE_DAYS} days.</p>
+    </div></div>`;
+  } else {
+    const d=DIMS[step-1];
+    let extra="";
+    if(d.id==="tools") extra = `<div class="q"><p class="q-label">Optional · not scored</p><h3>Which systems does the business run on?</h3><p class="muted small">Tick everything that applies.</p><div class="checks">${SYSTEMS.map((o,i)=>`<label class="opt" for="sys-${i}"><input type="checkbox" id="sys-${i}" name="systems" value="${o}" ${details.systems.includes(o)?"checked":""}><span>${o}</span></label>`).join("")}</div></div>`;
+    host.innerHTML = `<div class="step"><div class="step-head"><p class="eyebrow">Area ${step} of ${DIMS.length}</p><h2>${d.name}</h2><p class="muted">${d.blurb}</p></div>`+
+      d.qs.map((q,i)=>`<div class="q" data-q="${d.id+i}"><p class="q-label">Question ${(step-1)*3+i+1} of 18</p><h3>${q[0]}</h3>${optHtml(d.id+i,q[1])}</div>`).join("")+extra+`</div>`;
+  }
+  $("#backBtn").disabled = false;
+  $("#nextBtn").textContent = step===0 ? "Start the questions" : step===DIMS.length ? "See my results" : "Next";
+  $("#nextBtn").className = step===DIMS.length ? "btn primary" : "btn";
+  progress();
+}
+function readDetails(){ ["name","company","email","sector","size"].forEach(k=>{const el=$("#f-"+k); if(el) details[k]=el.value.trim();});
+  if($("#f-privacy")){ details.privacy=$("#f-privacy").checked; details.marketing=$("#f-marketing").checked; } }
+$("#form").addEventListener("input",e=>{ if(step===0){ readDetails(); e.target.closest(".field")?.classList.remove("bad"); save(); } });
+$("#form").addEventListener("change",e=>{
+  const t=e.target; if(!t.name) return;
+  if(step===0){ readDetails(); t.closest(".field,.consent")?.classList.remove("bad"); }
+  else if(t.name==="systems"){ details.systems=[...document.querySelectorAll('input[name="systems"]:checked')].map(i=>i.value); }
+  else { answers[t.name]=t.value; t.closest(".q")?.classList.remove("missing"); progress(); }
+  save();
+});
+function validDetails(){
+  readDetails(); const errs={};
+  if(!details.name) errs.name="Please add your name.";
+  if(!details.company) errs.company="Please add your company name.";
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(details.email)) errs.email="Please enter a valid email address, like name@company.co.uk.";
+  if(!details.sector) errs.sector="Please choose a sector.";
+  if(!details.size) errs.size="Please choose a size.";
+  document.querySelectorAll("[data-f]").forEach(f=>{const k=f.dataset.f; f.classList.toggle("bad",!!errs[k]); const er=f.querySelector(".err"); if(er) er.textContent=errs[k]||"";});
+  if(!details.privacy){ errs.privacy=1; $(".consent").classList.add("bad"); }
+  const n=Object.keys(errs).length;
+  if(n){ $("#hint").textContent = errs.privacy&&n===1 ? "Please confirm you've read the privacy notice." : "A few details still need filling in."; document.querySelector(".bad")?.scrollIntoView({behavior:"smooth",block:"center"}); }
+  return !n;
+}
+$("#form").addEventListener("submit",e=>{
+  e.preventDefault();
+  if(step===0){ if(!validDetails()) return; if(SEND_ON_START) send("started"); step=1; save(); render(); window.scrollTo({top:0}); return; }
+  const qs=[...document.querySelectorAll("#stepHost .q[data-q]")];
+  const missing=qs.filter(q=>!answers[q.dataset.q]);
+  qs.forEach(q=>q.classList.toggle("missing",missing.includes(q)));
+  if(missing.length){ $("#hint").textContent=`${missing.length} question${missing.length>1?'s':''} still to answer.`; missing[0].scrollIntoView({behavior:"smooth",block:"start"}); return; }
+  if(step<DIMS.length){ step++; save(); render(); window.scrollTo({top:0}); } else showResults();
+});
+$("#backBtn").addEventListener("click",()=>{ if(step===0){ $("#form").hidden=true; $("#intro").hidden=false; } else { step--; render(); } window.scrollTo({top:0}); });
+$("#startBtn").addEventListener("click",()=>{ $("#intro").hidden=true; $("#form").hidden=false; if(!resumed) step=0; render(); window.scrollTo({top:0}); });
+const resumed = load() && (details.name || Object.keys(answers).length);
+if(resumed){ $("#startBtn").textContent = step>0 ? `Carry on from area ${step}` : "Carry on where you left off"; }
+$("#sampleBtn").addEventListener("click",()=>{
+  const sample={vision0:3,vision1:2,vision2:3,opps0:2,opps1:3,opps2:2,people0:4,people1:3,people2:2,tools0:2,tools1:3,tools2:2,gov0:2,gov1:2,gov2:3,value0:2,value1:3,value2:2};
+  Object.assign(answers,sample); Object.assign(details,{name:"Sam Taylor",company:"Example Events Ltd",sector:"Creative or events agency",size:"10 to 49"}); showResults(true);
+});
+
+function calc(){
+  const dims = DIMS.map(d=>{ const sum=d.qs.reduce((s,_,i)=>s+Number(answers[d.id+i]),0); return {...d, pct:Math.round((sum-3)/12*100)}; });
+  const overall = Math.round(dims.reduce((s,d)=>s+d.pct,0)/dims.length);
+  return {dims, overall};
+}
+const band = p => p<40?"low":p<70?"mid":"high";
+const bandName = {low:"Needs attention",mid:"Developing",high:"Strong"};
+const colour = {low:"var(--low)",mid:"var(--warn)",high:"var(--good)"};
+
+function radar(dims){
+  const cx=150,cy=150,R=95,n=dims.length;
+  const pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/n;return [cx+Math.cos(a)*r,cy+Math.sin(a)*r]};
+  let s=`<svg class="radar" viewBox="-45 -5 390 310" role="img" aria-label="Score by area">`;
+  [25,50,75,100].forEach(l=>{s+=`<polygon points="${dims.map((_,i)=>pt(i,R*l/100).join(",")).join(" ")}" fill="none" stroke="var(--line)" stroke-width="1"/>`});
+  dims.forEach((_,i)=>{const [x,y]=pt(i,R);s+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="var(--line)"/>`});
+  s+=`<polygon points="${dims.map((d,i)=>pt(i,Math.max(d.pct,3)/100*R).join(",")).join(" ")}" fill="var(--accent)" fill-opacity=".22" stroke="var(--accent)" stroke-width="2"/>`;
+  dims.forEach((d,i)=>{const [x,y]=pt(i,Math.max(d.pct,3)/100*R);s+=`<circle cx="${x}" cy="${y}" r="3.5" fill="var(--accent)"/>`});
+  dims.forEach((d,i)=>{const [x,y]=pt(i,R+20);const anchor=Math.abs(x-cx)<5?"middle":x>cx?"start":"end";
+    const label=({"People and Culture":"People","Tools and Data":"Tools & Data","Governance":"Governance"})[d.name]||d.name;
+    s+=`<text x="${x}" y="${y+4}" text-anchor="${anchor}">${label} ${d.pct}</text>`});
+  return s+`</svg>`;
+}
+
+function flags(dims){
+  const a=k=>Number(answers[k]); const p=id=>dims.find(d=>d.id===id).pct; const out=[];
+  if(a("people0")>=3 && p("gov")<45) out.push(["Use is ahead of your rules","Your team is already using AI, but guidance and oversight haven't caught up. This is the most common source of client data risk we see."]);
+  if(a("vision1")<=2) out.push(["Nobody owns this yet","Without a named leader with budget, AI stays a side project. Ownership comes before tools."]);
+  if(a("people2")<=2) out.push(["No champion in place","Even with the right tools, adoption tends to fade without someone to keep it going day to day."]);
+  if(p("opps")>=50 && p("value")<40) out.push(["Ideas are ahead of measurement","You can see opportunities, but there's no agreed way to tell whether AI has paid off. Set a baseline before you spend."]);
+  if(p("tools")<35 && p("opps")>=40) out.push(["Your data will slow you down","The opportunities are there, but scattered and re-typed information will limit what AI can do."]);
+  if(a("value0")<=2 && a("value2")>=4) out.push(["Budget without a yardstick","There's money available but no way yet to judge success. Agree the measures first."]);
+  return out.slice(0,3);
+}
+
+function summaryText(r,stage,pri){
+  return `Go Wisely AI Readiness Scorecard\n${details.company} (${details.sector}, ${details.size} people)\nPrepared for ${details.name}\n\nOverall: ${r.overall}/100 - ${stage.name}\n\n`+
+   r.dims.map(d=>`${d.name}: ${d.pct}/100 (${bandName[band(d.pct)]})`).join("\n")+
+   `\n\nFirst priorities:\n`+pri.map((d,i)=>`${i+1}. ${d.name} - ${d.move}`).join("\n");
+}
+
+function showResults(isSample){
+  const r=calc(); const stage=[...STAGES].reverse().find(s=>r.overall>=s.min);
+  const pri=[...r.dims].sort((a,b)=>a.pct-b.pct).slice(0,3);
+  const best=[...r.dims].sort((a,b)=>b.pct-a.pct)[0];
+  const fl=flags(r.dims);
+  $("#intro").hidden=true; $("#form").hidden=true;
+  const el=$("#results"); el.hidden=false;
+  el.innerHTML = `
+  <div class="hero">
+    <div>
+      <p class="eyebrow">${isSample?"Example result · a 25-person events agency":esc(details.company)+" · AI readiness"}</p>
+      <div class="score"><b>${r.overall}</b><span>/ 100</span></div>
+      <p class="stage">${stage.name}</p>
+      <p class="stage-copy">${stage.copy}</p>
+    </div>
+    ${radar(r.dims)}
+  </div>
+
+  <div class="sec">
+    <h2>Your six areas</h2>
+    <p class="muted">Your strongest area is <strong>${best.name}</strong>. Build on it while you work on the gaps below.</p>
+    <div class="rows">${r.dims.map(d=>{const b=band(d.pct);return `
+      <div class="row"><div><div class="row-name">${d.name}</div><div class="meter"><div class="m"><i style="width:${Math.max(d.pct,2)}%;background:${colour[b]}"></i></div><em>${d.pct}</em></div></div>
+      <div><span class="pill ${b}">${bandName[b]}</span><p>${d[b]}</p></div></div>`}).join("")}</div>
+  </div>
+
+  ${fl.length?`<div class="sec"><h2>Worth knowing</h2><p class="muted">Patterns in your answers that tend to cause problems if they're left alone.</p><div class="flags">${fl.map(f=>`<div class="flag"><strong>${f[0]}</strong>${f[1]}</div>`).join("")}</div></div>`:""}
+
+  <div class="sec">
+    <h2>Where to start</h2>
+    <p class="muted">Your three lowest-scoring areas, and one practical first move for each. You can do all of these without us.</p>
+    <ol class="pri">${pri.map(d=>`<li><strong>${d.name} · ${d.pct}/100</strong><span>${d.move}</span></li>`).join("")}</ol>
+  </div>
+
+  <div class="next">
+    <p class="eyebrow">What comes next</p>
+    <h2>This scorecard shows where you stand. The Diagnostic shows what to do about it.</h2>
+    <p>The Go Wisely AI Accelerator Diagnostic is a half-day session with your leadership team, working through the same six areas in depth. It's built around your business, your data and your people.</p>
+    <ul>
+      <li>A clear verdict: go, pilot, or wait</li>
+      <li>Ranked opportunities with realistic value attached</li>
+      <li>A governance starting point you can use straight away</li>
+      <li>A written report and roadmap within one week</li>
+    </ul>
+    <p class="price">£3,500, fixed price</p>
+    <p>If the right answer is to wait, we'll say so. Start with a free 30-minute Discovery Session and bring these results.</p>
+    <div class="row-btn"><a class="btn primary" href="${CAL}" target="_blank" rel="noopener">Book a free Discovery Session</a><button class="btn ghost" id="copyBtn" type="button">Copy my results</button></div>
+    <p class="signoff">Go wisely.</p>
+  </div>
+  <textarea class="copybox" id="copyBox" hidden readonly aria-label="Your results as text"></textarea>
+  <div class="tools small muted"><button class="btn ghost" id="retake" type="button">${isSample?"Take the scorecard yourself":"Start again"}</button><span>Scores are indicative, based on your own answers. They're a starting point for a conversation.</span></div>`;
+  const txt=summaryText(r,stage,pri);
+  if(!isSample){ const flat={}; r.dims.forEach(d=>flat["score_"+d.id]=d.pct);
+    DIMS.forEach(d=>d.qs.forEach((_,i)=>flat["q_"+d.id+(i+1)]=answers[d.id+i]));
+    send("completed",{summary:txt, overall_score:r.overall, verdict:stage.name, priorities:pri.map(d=>d.name).join("; "), flags:fl.map(f=>f[0]).join("; "), ...flat});
+    clearSaved(); }
+  $("#copyBtn").addEventListener("click",async()=>{
+    try{ await navigator.clipboard.writeText(txt); $("#copyBtn").textContent="Copied"; }
+    catch(e){ const b=$("#copyBox"); b.value=txt; b.hidden=false; b.select(); $("#copyBtn").textContent="Select and copy below"; }
+  });
+  $("#retake").addEventListener("click",()=>{ for(const k in answers) delete answers[k]; Object.assign(details,{name:"",company:"",email:"",sector:"",size:"",privacy:false,marketing:false,systems:[]}); step=0; clearSaved(); $("#startBtn").textContent="Start the scorecard"; el.hidden=true; $("#intro").hidden=false; progress(); $("#barStatus").textContent="AI Readiness Scorecard"; window.scrollTo({top:0}); });
+  $("#trackFill").style.width="100%"; $("#barStatus").textContent= isSample?"Example result":"Your results";
+  window.scrollTo({top:0});
+}
+</script>
+
+</body>
+</html>
