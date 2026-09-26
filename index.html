@@ -60,8 +60,10 @@ button{font:inherit;cursor:pointer}
 /* top bar */
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-20px;padding:12px 20px}
 .bar-in{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px}
-.brand{font-family:var(--serif);font-size:18px}
-.brand b{color:var(--accent);font-weight:400}
+.brand{font-family:var(--serif);font-size:18px;color:#ED7D31;text-decoration:none}
+.brand:hover{text-decoration:underline;text-underline-offset:4px}
+.sample-cta{margin-top:18px}
+.print-only{display:none}
 .track{height:3px;background:var(--line);margin-top:10px;max-width:760px;margin-inline:auto;border-radius:2px;overflow:hidden}
 .track i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
 
@@ -144,6 +146,17 @@ a.btn{text-decoration:none;display:inline-block}
 .next .price{font-family:var(--serif);font-size:20px}
 .next .row-btn{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:6px}
 .next .btn.ghost{color:var(--bg);border-color:color-mix(in srgb,var(--bg) 35%,transparent)}
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
+@media (max-width:640px){.tiers{grid-template-columns:1fr}}
+.tier{position:relative;border:1px solid color-mix(in srgb,var(--bg) 22%,transparent);border-radius:10px;padding:20px 18px;display:grid;gap:8px;align-content:start}
+.tier.rec{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.tier h3{font-size:21px;line-height:1.25}
+.tier-price{font-family:var(--serif);font-size:18px;color:var(--accent)}
+.tier-best{font-weight:500}
+.tier ul{font-size:14.5px}
+.tier-note{font-size:13.5px;opacity:.75}
+.rec-tag{justify-self:start;background:var(--accent);color:#1F150D;font-size:12px;font-weight:600;letter-spacing:.03em;padding:3px 9px;border-radius:99px}
+.rec-why{font-size:14.5px;opacity:.85}
 .signoff{font-family:var(--serif);font-style:italic;font-size:18px}
 .tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .small{font-size:13.5px}
@@ -168,9 +181,26 @@ textarea.copybox{width:100%;height:160px;font:13px/1.5 ui-monospace,monospace;ba
 .checks .opt{padding:10px 14px;font-size:15px}
 .note{font-size:13.5px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{
+  :root,:root[data-theme="dark"]{color-scheme:light;--bg:#FFFFFF;--surface:#FFFFFF;--ink:#2B2B2B;--muted:#57534E;--line:#DDD8CF;--accent:#ED7D31;--accent-ink:#C45E18;--accent-soft:#FBE7D8;--good:#3F7D58;--warn:#B7791F;--low:#B4432F}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{size:A4;margin:14mm}
+  body{padding:0;font-size:12pt}
+  .bar,.tools,.row-btn,.copybox,.sample-cta,.no-print{display:none!important}
+  .print-only{display:block}
+  .res{padding-top:0;gap:24px}
+  .hero{grid-template-columns:1fr 260px}
+  .row,.flag,.pri li,.next{break-inside:avoid}
+  .next{background:#fff;color:#2B2B2B;border:1px solid #DDD8CF}
+  .next .eyebrow{color:#C45E18}
+  .tier{border-color:#DDD8CF;break-inside:avoid}
+  .tier.rec{border-color:#ED7D31;background:#FDF3EC}
+  .tier-price{color:#C45E18}
+  a{color:inherit;text-decoration:none}
+}
 </style>
 
-<div class="bar"><div class="bar-in"><span class="brand">Go <b>Wisely</b></span><span id="barStatus" class="muted">AI Readiness Scorecard</span></div><div class="track"><i id="trackFill"></i></div></div>
+<div class="bar"><div class="bar-in"><a class="brand" id="brandLink" href="https://gowisely.ai" title="Go back">Go Wisely</a><span id="barStatus" class="muted">AI Readiness Scorecard</span></div><div class="track"><i id="trackFill"></i></div></div>
 
 <div class="wrap">
   <!-- INTRO -->
@@ -380,6 +410,9 @@ $("#form").addEventListener("submit",e=>{
 });
 $("#backBtn").addEventListener("click",()=>{ if(step===0){ $("#form").hidden=true; $("#intro").hidden=false; } else { step--; render(); } window.scrollTo({top:0}); });
 $("#startBtn").addEventListener("click",()=>{ $("#intro").hidden=true; $("#form").hidden=false; if(!resumed) step=0; render(); window.scrollTo({top:0}); });
+$("#brandLink").addEventListener("click",e=>{
+  if(history.length>1 && document.referrer){ e.preventDefault(); history.back(); }
+});
 const resumed = load() && (details.name || Object.keys(answers).length);
 if(resumed){ $("#startBtn").textContent = step>0 ? `Carry on from area ${step}` : "Carry on where you left off"; }
 $("#sampleBtn").addEventListener("click",()=>{
@@ -432,15 +465,23 @@ function showResults(isSample){
   const pri=[...r.dims].sort((a,b)=>a.pct-b.pct).slice(0,3);
   const best=[...r.dims].sort((a,b)=>b.pct-a.pct)[0];
   const fl=flags(r.dims);
+  const pd=id=>r.dims.find(d=>d.id===id).pct;
+  const teamGap = Math.min(pd("people"),pd("gov"),pd("tools")) < 50 || fl.some(f=>f[0]==="Use is ahead of your rules");
+  const rec = teamGap ? "full" : "half";
+  const recWhy = rec==="full"
+    ? "Your answers point to gaps in how the wider team uses AI, not just at leadership level. The survey and interviews in the Full Diagnostic are how those gaps get seen."
+    : "Your biggest gaps sit at leadership level, in direction, ownership and measurement. Half Day Leadership Alignment is built for exactly that.";
   $("#intro").hidden=true; $("#form").hidden=true;
   const el=$("#results"); el.hidden=false;
   el.innerHTML = `
   <div class="hero">
     <div>
+      <p class="print-only small muted">Go Wisely AI Readiness Scorecard · ${isSample?"Example result":"Prepared for "+esc(details.name)+", "+esc(details.company)} · ${new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})} · score.gowisely.ai</p>
       <p class="eyebrow">${isSample?"Example result · a 25-person events agency":esc(details.company)+" · AI readiness"}</p>
       <div class="score"><b>${r.overall}</b><span>/ 100</span></div>
       <p class="stage">${stage.name}</p>
       <p class="stage-copy">${stage.copy}</p>
+      ${isSample?`<button class="btn primary sample-cta" id="sampleStart" type="button">Complete the Scorecard</button>`:""}
     </div>
     ${radar(r.dims)}
   </div>
@@ -463,17 +504,38 @@ function showResults(isSample){
 
   <div class="next">
     <p class="eyebrow">What comes next</p>
-    <h2>This scorecard shows where you stand. The Diagnostic shows what to do about it.</h2>
-    <p>The Go Wisely AI Accelerator Diagnostic is a half-day session with your leadership team, working through the same six areas in depth. It's built around your business, your data and your people.</p>
-    <ul>
-      <li>A clear verdict: go, pilot, or wait</li>
-      <li>Ranked opportunities with realistic value attached</li>
-      <li>A governance starting point you can use straight away</li>
-      <li>A written report and roadmap within one week</li>
-    </ul>
-    <p class="price">£3,500, fixed price</p>
-    <p>If the right answer is to wait, we'll say so. Start with a free 30-minute Discovery Session and bring these results.</p>
-    <div class="row-btn"><a class="btn primary" href="${CAL}" target="_blank" rel="noopener">Book a free Discovery Session</a><button class="btn ghost" id="copyBtn" type="button">Copy my results</button></div>
+    <h2>This scorecard shows where you stand. A Diagnostic shows what to do about it.</h2>
+    <p>Go Wisely runs the AI Accelerator Diagnostic in two forms, both built on the same six areas as this scorecard.</p>
+    <div class="tiers">
+      <div class="tier${rec==="half"?" rec":""}">
+        ${rec==="half"?`<span class="rec-tag">Suggested from your answers</span>`:""}
+        <h3>Half Day Leadership Alignment</h3>
+        <p class="tier-price">From £1,200</p>
+        <p class="tier-best">Best when the leadership team needs to agree where AI fits.</p>
+        <ul>
+          <li>Half a day with the leadership team, working through the six areas together</li>
+          <li>An initial maturity assessment and recommendations</li>
+          <li>A consolidated report and full notes afterwards</li>
+        </ul>
+        <p class="tier-note">Based on the leadership team's own view.</p>
+      </div>
+      <div class="tier${rec==="full"?" rec":""}">
+        ${rec==="full"?`<span class="rec-tag">Suggested from your answers</span>`:""}
+        <h3>Full AI Accelerator Diagnostic</h3>
+        <p class="tier-price">From £3,500</p>
+        <p class="tier-best">Best when you need alignment at the top and adoption across the team.</p>
+        <ul>
+          <li>An all-hands survey showing how the team really uses AI</li>
+          <li>1:1 interviews with leaders and key people</li>
+          <li>A leadership working session</li>
+          <li>A written report with a validated maturity read, three priority use cases, a 12-month roadmap and a governance position</li>
+        </ul>
+        <p class="tier-note">Run over about two weeks, at your pace.</p>
+      </div>
+    </div>
+    <p class="rec-why">${recWhy}</p>
+    <p>Not sure which fits? Start with a free 30-minute Discovery Session and bring these results. If the right answer is to wait, Go Wisely will say so.</p>
+    <div class="row-btn"><a class="btn primary" href="${CAL}" target="_blank" rel="noopener">Book a free Discovery Session</a><button class="btn ghost" id="copyBtn" type="button">Copy my results</button><button class="btn ghost" id="pdfBtn" type="button">Save as PDF</button></div>
     <p class="signoff">Go wisely.</p>
   </div>
   <textarea class="copybox" id="copyBox" hidden readonly aria-label="Your results as text"></textarea>
@@ -487,7 +549,10 @@ function showResults(isSample){
     try{ await navigator.clipboard.writeText(txt); $("#copyBtn").textContent="Copied"; }
     catch(e){ const b=$("#copyBox"); b.value=txt; b.hidden=false; b.select(); $("#copyBtn").textContent="Select and copy below"; }
   });
-  $("#retake").addEventListener("click",()=>{ for(const k in answers) delete answers[k]; Object.assign(details,{name:"",company:"",email:"",sector:"",size:"",privacy:false,marketing:false,systems:[]}); step=0; clearSaved(); $("#startBtn").textContent="Start the scorecard"; el.hidden=true; $("#intro").hidden=false; progress(); $("#barStatus").textContent="AI Readiness Scorecard"; window.scrollTo({top:0}); });
+  const reset=()=>{ for(const k in answers) delete answers[k]; Object.assign(details,{name:"",company:"",email:"",sector:"",size:"",privacy:false,marketing:false,systems:[]}); step=0; clearSaved(); $("#startBtn").textContent="Start the scorecard"; el.hidden=true; progress(); $("#barStatus").textContent="AI Readiness Scorecard"; };
+  $("#retake").addEventListener("click",()=>{ reset(); $("#intro").hidden=false; window.scrollTo({top:0}); });
+  if(isSample) $("#sampleStart").addEventListener("click",()=>{ reset(); $("#form").hidden=false; render(); window.scrollTo({top:0}); });
+  $("#pdfBtn").addEventListener("click",()=>{ try{ window.print(); }catch(e){} });
   $("#trackFill").style.width="100%"; $("#barStatus").textContent= isSample?"Example result":"Your results";
   window.scrollTo({top:0});
 }
